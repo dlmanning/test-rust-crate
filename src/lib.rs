@@ -1,3 +1,5 @@
+use voracious_radix_sort::RadixSort;
+
 pub fn quicksort<T: Ord>(arr: &mut [T]) {
     if arr.len() <= 1 {
         return;
@@ -31,6 +33,10 @@ pub fn bubblesort<T: Ord>(arr: &mut [T]) {
     }
 }
 
+pub fn radix_sor(arr: &mut Vec<i32>) {
+    arr.voracious_sort()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -46,6 +52,13 @@ mod tests {
     fn test_bubblesort() {
         let mut arr = [3, 2, 1, 5, 4];
         bubblesort(&mut arr);
+        assert_eq!(arr, [1, 2, 3, 4, 5]);
+    }
+
+    #[test]
+    fn test_radix_sort() {
+        let mut arr = vec![3, 2, 1, 5, 4];
+        radix_sor(&mut arr);
         assert_eq!(arr, [1, 2, 3, 4, 5]);
     }
 }
